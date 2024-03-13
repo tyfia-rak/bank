@@ -15,5 +15,5 @@ public class Account implements Serializable {
     private Date birthday;
     private Double bank_balance;
     private String bank_name;
-    private String salary_amount;
+    private double salary_amount;
 }
