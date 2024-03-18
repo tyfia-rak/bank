@@ -10,6 +10,7 @@ import java.sql.Date;
 @ToString
 @NoArgsConstructor
 public class Account implements Serializable {
+    private int id;
     private String first_name;
     private String lastName;
     private Date birthday;
