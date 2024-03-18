@@ -1,6 +1,7 @@
 package com.bank.prog4.entity;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Getter
@@ -8,7 +9,7 @@ import java.util.Date;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Retreat {
+public class Retreat implements Serializable {
     private int id;
     private double amount;
     private Date transaction_date;
