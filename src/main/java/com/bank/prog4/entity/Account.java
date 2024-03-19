@@ -2,19 +2,20 @@ package com.bank.prog4.entity;
 
 import lombok.*;
 
-import java.io.Serializable;
 import java.sql.Date;
-@Getter
+
 @AllArgsConstructor
+@Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Account implements Serializable {
+public class Account  {
     private int id;
     private String first_name;
     private String lastName;
     private Date birthday;
     private Double bank_balance;
     private String bank_name;
-    private double salary_amount;
+    private Double salary_amount;
+    private Boolean overdraw;
 }
