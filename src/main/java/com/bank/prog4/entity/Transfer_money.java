@@ -10,7 +10,7 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 public class Transfer_money {
-    private int id;;
+    private int id;
     private int credit_account;
     private int account_receivable;
     private double amount;
