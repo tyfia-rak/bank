@@ -5,6 +5,8 @@ import com.bank.prog4.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.util.Optional;
+
 @CrossOrigin("*")
 @RestController
 public class AccountController {
@@ -19,5 +21,9 @@ public class AccountController {
     @PostMapping("/insert")
     public Account insertAccount(@RequestBody Account toInsert) throws SQLException{
         return  accountService.insert(toInsert);
+    }
+    @GetMapping("/id_account/{id}")
+    public Account selectClient (@PathVariable int id) throws SQLException{
+        return accountService.idAccount(id);
     }
 }
