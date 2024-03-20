@@ -20,7 +20,7 @@ public class AccountDAO implements GenericDAO<Account> {
                 + " VALUES (?,?,?,?,?,?,?,?)"
                 + " ON CONFLICT (id)"
                 + " DO UPDATE SET FIRST_NAME = EXCLUDED.FIRST_NAME, LAST_NAME = EXCLUDED.LAST_NAME,BIRTHDAY = EXCLUDED.BIRTHDAY,"
-        +"BANK_BALANCE = EXCLUDED.BANK_BALANCE,  BANK_NAME = EXCLUDED.BANK_NAME,OVERDRAW = EXCLUDED.OVERDRAW"
+                + "BANK_BALANCE = EXCLUDED.BANK_BALANCE,  BANK_NAME = EXCLUDED.BANK_NAME,OVERDRAW = EXCLUDED.OVERDRAW"
                 + " RETURNING id";
 
 

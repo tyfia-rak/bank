@@ -14,7 +14,7 @@ public class RetreatDAO implements GenericDAO<Retreat> {
                 + " VALUES (?,?,?,?)"
                 + " ON CONFLICT (id)"
                 + " DO UPDATE SET ID = EXCLUDED.ID, amount = EXCLUDED.AMOUNT,date_transaction = EXCLUDED.DATE_TRANSACTION,"
-                +"ID_ACCOUNT = EXCLUDED.ID_ACCOUNT"
+                + "ID_ACCOUNT = EXCLUDED.ID_ACCOUNT"
                 + " RETURNING id";
 
 
