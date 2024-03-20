@@ -21,12 +21,14 @@ public class IncomingTransferExternalBank {
         otherBankDAO.save(otherBank);
         return "Transaction effectued";
     }
-
-    public static void main(String[] args) throws SQLException {
+/*
+public static void main(String[] args) throws SQLException {
         Date date = Date.valueOf("2024-12-12");
         Date dater = Date.valueOf("2024-12-11");
         Other_bank otherBank = new Other_bank(1,3000.00,"OOO","NO REASON",date,dater,1);
         IncomingTransferExternalBank incomingTransferExternalBank = new IncomingTransferExternalBank();
         System.out.println(incomingTransferExternalBank.IncomingMoney(otherBank));
     }
+ */
+
 }
