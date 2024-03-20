@@ -5,6 +5,7 @@ import com.bank.prog4.Generic.GenericDAO;
 import com.bank.prog4.entity.Account;
 import org.springframework.stereotype.Repository;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -75,8 +76,26 @@ public class AccountDAO implements GenericDAO<Account> {
     }
 
     @Override
-    public List<Account> findAll() {
-        return null;
-    }
+    public List<Account> findAll() throws SQLException{
+        String sql = "SELECT * FROM \"Account\"";
+        List<Account> accounts = new ArrayList<>();
 
+        try (PreparedStatement statement = getConnection().prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                int accountId = resultSet.getInt("id");
+                String firstName = resultSet.getString("first_name");
+                String lastName = resultSet.getString("last_name");
+                java.sql.Date birthday = resultSet.getDate("birthday");
+                double bankBalance = resultSet.getDouble("bank_balance");
+                String bankName = resultSet.getString("bank_name");
+                double salaryAmount = resultSet.getDouble("salary_amount");
+                boolean overdrawn = resultSet.getBoolean("overdraw");
+
+                Account account = new Account(accountId, firstName, lastName, birthday, bankBalance, bankName, salaryAmount, overdrawn);
+                accounts.add(account);
+            }
+        }
+        return accounts;
+    }
 }
