@@ -19,6 +19,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Account'
+  /accounts/{Id}:
+    get:
+      summary: Get account by ID
+      tags:
+        - Accounts
+      parameters:
+        - name: accountId
+          in: path
+          description: ID of the account to retrieve
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Account details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
     post:
       summary: Create a new account
       tags:
