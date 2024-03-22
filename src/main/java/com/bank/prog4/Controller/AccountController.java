@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.List;
 
+import java.util.Optional;
+
 @CrossOrigin("*")
 @RestController
 public class AccountController {
@@ -28,6 +30,7 @@ public class AccountController {
     }
     @GetMapping("/all_account")
     public List<Account> AllAccount ()throws  SQLException{
+
         return accountService.findAll();
     }
 }
