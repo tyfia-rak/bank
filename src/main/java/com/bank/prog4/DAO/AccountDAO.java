@@ -27,12 +27,12 @@ public class AccountDAO implements GenericDAO<Account> {
         try (Connection connection = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, toSave.getId());
-            preparedStatement.setString(2,toSave.getFirst_name());
+            preparedStatement.setString(2,toSave.getFirstName());
             preparedStatement.setString(3,toSave.getLastName());
             preparedStatement.setDate(4,toSave.getBirthday());
-            preparedStatement.setDouble(5,toSave.getBank_balance());
-            preparedStatement.setString(6,toSave.getBank_name());
-            preparedStatement.setDouble(7,toSave.getSalary_amount());
+            preparedStatement.setDouble(5,toSave.getBankBalance());
+            preparedStatement.setString(6,toSave.getBankName());
+            preparedStatement.setDouble(7,toSave.getSalaryAmount());
             preparedStatement.setBoolean(8,toSave.getOverdraw());
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -75,12 +75,13 @@ public class AccountDAO implements GenericDAO<Account> {
         return account;
     }
 
-    @Override
-    public List<Account> findAll() throws SQLException{
-        String sql = "SELECT * FROM \"Account\"";
-        List<Account> accounts = new ArrayList<>();
 
-        try (PreparedStatement statement = getConnection().prepareStatement(sql);
+
+    public List<Account> findAll() throws SQLException{
+        String allAccount = "SELECT * FROM \"Account\"";
+        List<Account> allAccounts = new ArrayList<>();
+
+        try (PreparedStatement statement = getConnection().prepareStatement(allAccount);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 int accountId = resultSet.getInt("id");
@@ -93,9 +94,10 @@ public class AccountDAO implements GenericDAO<Account> {
                 boolean overdrawn = resultSet.getBoolean("overdraw");
 
                 Account account = new Account(accountId, firstName, lastName, birthday, bankBalance, bankName, salaryAmount, overdrawn);
-                accounts.add(account);
+                allAccounts.add(account);
             }
         }
-        return accounts;
+        return allAccounts;
     }
+}
 }
