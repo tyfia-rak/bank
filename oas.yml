@@ -1,0 +1,45 @@
+openapi: '3.0.2'
+info:
+  title: Bank Account Management API
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /accounts:
+    get:
+      summary: Get all accounts
+      tags:
+        - Accounts
+      responses:
+        '200':
+          description: List of all accounts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the account
+        name:
+          type: string
+          description: Last name of the client
+        firstName:
+          type: string
+          description: First name(s) of the client
+        birthday:
+          type: string
+          format: date
+          description: Client's date of birth (in YYYY-MM-DD format)
+        monthlySalary:
+          type: number
+          description: Client's monthly net salary
+        accountNumber:
+          type: string
+          description: Unique account number
