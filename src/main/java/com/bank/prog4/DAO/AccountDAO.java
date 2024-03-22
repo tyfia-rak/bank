@@ -100,4 +100,4 @@ public class AccountDAO implements GenericDAO<Account> {
         return allAccounts;
     }
 }
-}
+
