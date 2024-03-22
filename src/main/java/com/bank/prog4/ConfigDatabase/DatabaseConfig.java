@@ -11,8 +11,8 @@ public class DatabaseConfig {
     private static String PASSWORD = System.getenv("password");
     @Bean
     public static Connection getConnection() throws SQLException {
+        System.out.println(URL);
         return DriverManager.getConnection(URL, USER, PASSWORD);
-
     }
 
 }

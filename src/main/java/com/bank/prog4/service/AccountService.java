@@ -23,6 +23,7 @@ public class AccountService {
         return accountDAO.selectById(id);
     }
     public List<Account> findAll()throws SQLException{
+
         return accountDAO.findAll();
     }
 }
