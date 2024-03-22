@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 public class DatabaseConfig {
     private static final String URL = System.getenv("url");
     private static final String USER = System.getenv("user");

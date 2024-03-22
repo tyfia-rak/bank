@@ -11,11 +11,11 @@ import java.sql.Date;
 @NoArgsConstructor
 public class Account  {
     private int id;
-    private String first_name;
+    private String firstName;
     private String lastName;
     private Date birthday;
-    private Double bank_balance;
-    private String bank_name;
-    private Double salary_amount;
+    private Double bankBalance;
+    private String bankName;
+    private Double salaryAmount;
     private Boolean overdraw;
 }
