@@ -36,10 +36,9 @@ public class RetreatAccount {
 
     public static void main(String[] args) throws SQLException {
         Date date = Date.valueOf("2018-12-15");
-      Retreat retreat = new Retreat(1,12000.00,date,1);
+      Retreat retreat = new Retreat(1,12000.00,date,0);
       RetreatAccount retreatAccount = new RetreatAccount();
         System.out.println(retreatAccount.withdrawMoney(retreat));
-
 
     }
 }// credit autorisé 1/3 salaire net
