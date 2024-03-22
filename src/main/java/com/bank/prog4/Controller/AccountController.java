@@ -5,7 +5,7 @@ import com.bank.prog4.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.util.Optional;
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -25,5 +25,9 @@ public class AccountController {
     @GetMapping("/id_account/{id}")
     public Account selectClient (@PathVariable int id) throws SQLException{
         return accountService.idAccount(id);
+    }
+    @GetMapping("/all_account")
+    public List<Account> AllAccount ()throws  SQLException{
+        return accountService.findAll();
     }
 }
