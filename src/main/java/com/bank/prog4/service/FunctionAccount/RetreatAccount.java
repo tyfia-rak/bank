@@ -24,7 +24,7 @@ public class RetreatAccount {
 
         else {
             if(plus>permit_credit){
-                return "Violation crédit";
+                return "Violation credit";
             }
             account.setBank_balance(rest);
             accountDAO.save(account);
@@ -33,12 +33,14 @@ public class RetreatAccount {
         }
 
     }
-
-    public static void main(String[] args) throws SQLException {
+/*
+public static void main(String[] args) throws SQLException {
         Date date = Date.valueOf("2018-12-15");
       Retreat retreat = new Retreat(1,12000.00,date,0);
       RetreatAccount retreatAccount = new RetreatAccount();
         System.out.println(retreatAccount.withdrawMoney(retreat));
 
     }
-}// credit autorisé 1/3 salaire net
+ */
+
+}
