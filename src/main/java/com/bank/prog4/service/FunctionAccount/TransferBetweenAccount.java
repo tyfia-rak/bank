@@ -20,12 +20,12 @@ public class TransferBetweenAccount {
 
 
         if ("credit".equals(transferMoney.getType())) {
-            Double amount = senderAccount.getBank_balance() - transferMoney.getAmount();
+            Double amount = senderAccount.getBankBalance() - transferMoney.getAmount();
             if (amount < 0) {
                 return "insufficient balance";
             } else {
-                senderAccount.setBank_balance(amount);
-                debitAccount.setBank_balance(debitAccount.getBank_balance() + transferMoney.getAmount());
+                senderAccount.setBankBalance(amount);
+                debitAccount.setBankBalance(debitAccount.getBankBalance() + transferMoney.getAmount());
                 accountDAO.save(senderAccount);
                 accountDAO.save(debitAccount);
                 transferMoneyDAO.save(transferMoney);
@@ -34,7 +34,7 @@ public class TransferBetweenAccount {
         } else if ("debit".equals(transferMoney.getType())) {
             if (isSamBank(senderAccount, debitAccount)) {
 
-                senderAccount.setBank_balance(senderAccount.getBank_balance() - transferMoney.getAmount());
+                senderAccount.setBankBalance(senderAccount.getBankBalance() - transferMoney.getAmount());
                 accountDAO.save(senderAccount);
             } else {
                 return "Wait 48 hours";
@@ -46,10 +46,10 @@ public class TransferBetweenAccount {
         return "success";
     }
     public boolean isSamBank (Account senderAccount, Account debitAccount){
-        return senderAccount.getBank_name().equals(debitAccount.getBank_name());
+        return senderAccount.getBankName().equals(debitAccount.getBankName());
     }
-
-    public static void main(String[] args) throws SQLException {
+/*
+ public static void main(String[] args) throws SQLException {
         Date date = Date.valueOf("2024-12-12");
         Date date1 = Date.valueOf("2024-12-11");
 
@@ -59,4 +59,6 @@ public class TransferBetweenAccount {
         System.out.println(transferBetweenAccount.TransferAccount(transferMoney));
 
     }
+ */
+
 }

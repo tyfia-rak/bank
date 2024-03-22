@@ -14,9 +14,9 @@ public class RetreatAccount {
         AccountDAO accountDAO = new AccountDAO();
         RetreatDAO retreatDAO = new RetreatDAO();
         Account account = accountDAO.selectById(retreat.getId_account());
-        Double rest = account.getBank_balance() - retreat.getAmount();
+        Double rest = account.getBankBalance() - retreat.getAmount();
         Double plus = Math.abs(rest);
-        Double permit_credit = account.getSalary_amount()/3;
+        Double permit_credit = account.getSalaryAmount()/3;
 
         if(!account.getOverdraw() && rest<0){
             return "insufficient balance";
@@ -26,7 +26,7 @@ public class RetreatAccount {
             if(plus>permit_credit){
                 return "Violation credit";
             }
-            account.setBank_balance(rest);
+            account.setBankBalance(rest);
             accountDAO.save(account);
             retreatDAO.save(retreat);
             return "Retreat effectued";
