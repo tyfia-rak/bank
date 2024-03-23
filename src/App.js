@@ -9,6 +9,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import DetailsComponent from './components/DetailsAccount';
 
 
 
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="App" id="outer-container">
       <Header/>
+      <DetailsComponent/>
       <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
       <AllAccount/>
       <Router>
@@ -24,6 +26,7 @@ function App() {
       </Routes>
     </Router>
     <Account/>
+  
     </div>
     
     
