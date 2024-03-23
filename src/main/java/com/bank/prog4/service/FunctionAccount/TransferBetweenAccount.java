@@ -15,7 +15,7 @@ public class TransferBetweenAccount {
         AccountDAO accountDAO = new AccountDAO();
         TransferMoneyDAO transferMoneyDAO = new TransferMoneyDAO();
 
-        Account senderAccount = accountDAO.selectById(transferMoney.getDEBIT_ACCOUNT());
+        Account senderAccount = accountDAO.selectById(transferMoney.getDebit_account());
         Account debitAccount = accountDAO.selectById(transferMoney.getCredit_account());
 
 
@@ -48,7 +48,8 @@ public class TransferBetweenAccount {
     public boolean isSamBank (Account senderAccount, Account debitAccount){
         return senderAccount.getBankName().equals(debitAccount.getBankName());
     }
-    public static void main(String[] args) throws SQLException {
+    /*
+     public static void main(String[] args) throws SQLException {
         Date date = Date.valueOf("2024-12-12");
         Date date1 = Date.valueOf("2024-12-11");
 
@@ -58,4 +59,6 @@ public class TransferBetweenAccount {
         System.out.println(transferBetweenAccount.TransferAccount(transferMoney));
 
     }
+     */
+
 }

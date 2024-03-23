@@ -26,12 +26,12 @@ public class TransferMoneyDAO implements GenericDAO<Transfer_money> {
         try (Connection connection = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, toSave.getCredit_account());
-            preparedStatement.setInt(2,toSave.getDEBIT_ACCOUNT());
+            preparedStatement.setInt(2,toSave.getDebit_account());
             preparedStatement.setDouble(3,toSave.getAmount());
             preparedStatement.setString(4,toSave.getTransfer_reason());
             preparedStatement.setString(5,toSave.getType());
-            preparedStatement.setDate(6, (Date) toSave.getEffective_date());
-            preparedStatement.setDate(7, (Date) toSave.getRegistration_date());
+            preparedStatement.setDate(6,  toSave.getEffective_date());
+            preparedStatement.setDate(7,  toSave.getRegistration_date());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -59,7 +59,7 @@ public class TransferMoneyDAO implements GenericDAO<Transfer_money> {
 
 
                     int credit_account = resultSet.getInt("credit_account");
-                    int account_receivable = resultSet.getInt("DEBIT_ACCOUNT");
+                    int account_receivable = resultSet.getInt("debit_account");
                     Double amount = resultSet.getDouble("amount");
                     String reason = resultSet.getString("transfer_reason");
                     String type = resultSet.getString("type");
