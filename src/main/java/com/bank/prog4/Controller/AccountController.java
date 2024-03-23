@@ -1,24 +1,27 @@
 package com.bank.prog4.Controller;
 
 import com.bank.prog4.entity.Account;
+import com.bank.prog4.entity.Details;
 import com.bank.prog4.service.AccountService;
+import com.bank.prog4.service.FunctionAccount.ShowAccountDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import java.util.Optional;
-
 @CrossOrigin("*")
 @RestController
 public class AccountController {
     public AccountService accountService;
+    public ShowAccountDetails showAccountDetails;
+
     @GetMapping("/ping")
     public String test (){
         return "pong";
     }
-    public AccountController(AccountService accountService){
+    public AccountController(AccountService accountService,ShowAccountDetails showAccountDetails){
         this.accountService = accountService;
+        this.showAccountDetails = showAccountDetails;
     }
     @PostMapping("/insert")
     public Account insertAccount(@RequestBody Account toInsert) throws SQLException{
@@ -33,4 +36,9 @@ public class AccountController {
 
         return accountService.findAll();
     }
+    @GetMapping("/details/{id}")
+    public Details getDetail(@PathVariable int id)throws SQLException{
+        return showAccountDetails.getAccount(id);
+    }
+
 }
