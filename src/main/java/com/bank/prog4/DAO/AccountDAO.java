@@ -26,7 +26,8 @@ public class AccountDAO implements GenericDAO<Account> {
 
         try (Connection connection = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, toSave.getId());
+
+            preparedStatement.setInt(1,toSave.getId());
             preparedStatement.setString(2,toSave.getFirstName());
             preparedStatement.setString(3,toSave.getLastName());
             preparedStatement.setDate(4,toSave.getBirthday());

@@ -5,6 +5,7 @@ import com.bank.prog4.Generic.GenericDAO;
 import com.bank.prog4.entity.Account;
 import com.bank.prog4.entity.Other_bank;
 import org.springframework.stereotype.Repository;
+import  java.util.Date;
 
 import java.lang.ref.PhantomReference;
 import java.sql.*;
@@ -30,8 +31,8 @@ public class Other_bankDAO implements GenericDAO<Other_bank> {
             preparedStatement.setDouble(2, toSave.getAmount());
             preparedStatement.setString(3,toSave.getBank_name());
             preparedStatement.setString(4, toSave.getTransfer_reason());
-            preparedStatement.setDate(5, (Date) toSave.getEffective_date());
-            preparedStatement.setDate(6, (Date) toSave.getRegistration_date());
+            preparedStatement.setDate(5,toSave.getEffective_date());
+            preparedStatement.setDate(6, toSave.getRegistration_date());
             preparedStatement.setInt(7,  toSave.getId_account());
 
 
