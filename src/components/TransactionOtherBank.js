@@ -20,8 +20,8 @@ function IncomingTransferForm() {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8080/other_bank', formData);
-      console.log(response.data); // Assuming the backend returns a message
-      // Reset form after successful submission
+      console.log(response.data); 
+      
       setFormData({
         id_account: '',
         amount: '',
