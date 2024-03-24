@@ -18,29 +18,32 @@ public class RetreatAccount {
         Double plus = Math.abs(rest);
         Double permit_credit = account.getSalaryAmount()/3;
 
-        if(!account.getOverdraw() && rest<0){
-            return "insufficient balance";
-        }
-
-        else {
-            if(plus>permit_credit){
-                return "Violation credit";
-            }
-            account.setBankBalance(rest);
+       if(!account.getOverdraw() && rest<0){
+           return "insufficiencies balance";
+       }
+       if(account.getOverdraw()){
+           if(plus>permit_credit){
+               return "insufficiencies credit";
+           }else {
+            account.setBankBalance(account.getBankBalance()-retreat.getAmount());
             accountDAO.save(account);
             retreatDAO.save(retreat);
-            return "Retreat effectued";
-        }
-
+           }
+       }
+        account.setBankBalance(account.getBankBalance()-retreat.getAmount());
+        accountDAO.save(account);
+        retreatDAO.save(retreat);
+       return "retreat effectued";
     }
-/*
+
 public static void main(String[] args) throws SQLException {
         Date date = Date.valueOf("2018-12-15");
-      Retreat retreat = new Retreat(1,12000.00,date,0);
+      Retreat retreat = new Retreat(15000.00,date,3);
       RetreatAccount retreatAccount = new RetreatAccount();
         System.out.println(retreatAccount.withdrawMoney(retreat));
 
     }
- */
+
+
 
 }
