@@ -32,7 +32,7 @@ public class AccountController {
         this.transferBetweenAccount = transferBetweenAccount;
         this.retreatAccount = retreatAccount;
     }
-    @PostMapping("/insert_account")
+    @PostMapping("/insert")
     public Account insertAccount(@RequestBody Account toInsert) throws SQLException{
         return  accountService.insert(toInsert);
     }
