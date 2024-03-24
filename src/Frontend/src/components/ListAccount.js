@@ -18,7 +18,8 @@ function AllAccount (){
       };
 
     return (
-        <Table striped bordered hover variant="white"style={{ width: '50%', marginTop:'10vh' }}>
+      <>
+         <Table striped bordered hover variant="white"style={{ width: '50%', marginTop:'10vh' }}>
           <thead>
             <tr>
               <th>ID</th>
@@ -46,6 +47,8 @@ function AllAccount (){
           ))}
           </tbody>
         </Table>
+      </>
+       
       );   
 }
 export default AllAccount;
