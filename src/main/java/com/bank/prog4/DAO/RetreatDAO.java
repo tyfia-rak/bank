@@ -10,26 +10,25 @@ import java.util.List;
 public class RetreatDAO implements GenericDAO<Retreat> {
     @Override
     public Retreat save(Retreat toSave) throws SQLException {
-        String sql = "INSERT INTO \"Retreat\" (ID,amount , date_transaction, id_account)"
-                + " VALUES (?,?,?,?)"
+        String sql = "INSERT INTO \"Retreat\" (amount , date_transaction, id_account)"
+                + " VALUES (?,?,?)"
                 + " ON CONFLICT (id)"
-                + " DO UPDATE SET ID = EXCLUDED.ID, amount = EXCLUDED.AMOUNT,date_transaction = EXCLUDED.DATE_TRANSACTION,"
+                + " DO UPDATE SET amount = EXCLUDED.AMOUNT,date_transaction = EXCLUDED.DATE_TRANSACTION,"
                 + "ID_ACCOUNT = EXCLUDED.ID_ACCOUNT"
                 + " RETURNING id";
 
 
         try (Connection connection = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, toSave.getId());
-            preparedStatement.setDouble(2,toSave.getAmount());
-            preparedStatement.setDate(3, (Date) toSave.getTransaction_date());
-            preparedStatement.setInt(4,toSave.getId_account());
+            preparedStatement.setDouble(1,toSave.getAmount());
+            preparedStatement.setDate(  2, toSave.getTransaction_date());
+            preparedStatement.setInt(  3, toSave.getId_account());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 int generatedId = resultSet.getInt(1);
-                toSave.setId(generatedId);
+                toSave.setAmount(generatedId);
             }
 
             return toSave;
