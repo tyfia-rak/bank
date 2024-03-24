@@ -14,7 +14,6 @@ public class Transfer_money {
     private int debit_account;
     private double amount;
     private String transfer_reason;
-    private String type;
     private java.sql.Date effective_date;
     private java.sql.Date registration_date;
 
