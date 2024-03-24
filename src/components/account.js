@@ -1,41 +1,41 @@
 import '../Styles/style.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+
 function Account() {
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     birthDate: "",
-    bankbalance: "",
-    salaryamount: "",
+    bankBalance: "",
+    salaryAmount: "",
     bank: "",
     overdraw: ""
   });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => {
-      return { ...prev, [e.target.name]: e.target.value }
-    });
-  }
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/insert', formData); // Remplacez l'URL par votre endpoint backend
+      const response = await axios.post('http://localhost:8080/insert_account', formData); 
       console.log('Compte créé avec succès:', response.data);
-      // Réinitialiser le formulaire après la création réussie du compte
       setFormData({
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         birthDate: "",
-        bankbalance: "",
-        salaryamount: "",
+        bankBalance: "",
+        salaryAmount: "",
         bank: "",
         overdraw: ""
       });
     } catch (error) {
       console.error('Erreur lors de la création du compte:', error);
+      setError("Une erreur s'est produite lors de la création du compte. Veuillez réessayer plus tard.");
     }
   };
 
@@ -48,31 +48,32 @@ function Account() {
         <section className="articleContainer">
           <h1>Create Account</h1>
           <form onSubmit={handleSubmit} className="infoContainer">
-            <label htmlFor="">First name :</label>
-            <input required name="firstname" type="text" value={formData.firstname} onChange={handleChange}  />
-            <label htmlFor="">Last name:</label>
-            <input required name="lastname" type="text" value={formData.lastname} onChange={handleChange}  />
-            <label htmlFor="">Birthday:</label>
-            <input required name="birthDate" type="date" value={formData.birthDate} onChange={handleChange}  />
-            <label htmlFor="">Bank balance</label>
-            <input required name="bankbalance" type="number" value={formData.bankbalance} onChange={handleChange} />
-            <label htmlFor="">Salary amount</label>
-            <input required name="salaryamount" type="number" value={formData.salaryamount} onChange={handleChange} />
-            <label htmlFor="bank-select">Choose bank</label>
+            <label htmlFor="firstname">First name :</label>
+            <input required name="firstName" type="text" value={formData.firstName} onChange={handleChange} />
+            <label htmlFor="lastname">Last name:</label>
+            <input required name="lastName" type="text" value={formData.lastName} onChange={handleChange} />
+            <label htmlFor="birthDate">Birthday:</label>
+            <input required name="birthDate" type="date" value={formData.birthDate} onChange={handleChange} />
+            <label htmlFor="bankbalance">Bank balance</label>
+            <input required name="bankBalance" type="number" value={formData.bankBalance} onChange={handleChange} />
+            <label htmlFor="salaryamount">Salary amount</label>
+            <input required name="salaryAmount" type="number" value={formData.salaryAmount} onChange={handleChange} />
+            <label htmlFor="bank">Choose bank</label>
             <select name="bank" value={formData.bank} onChange={handleChange}>
               <option value=""></option>
               <option value="BMOI">BMOI</option>
               <option value="BNI">BNI</option>
               <option value="BOA">BOA</option>
             </select>
-            <label htmlFor="">Choose Overdraw</label>
+            <label htmlFor="overdraw">Choose Overdraw</label>
             <select name="overdraw" value={formData.overdraw} onChange={handleChange}>
               <option value=""></option>
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
+            {error && <p className="error">{error}</p>}
             <button type="submit">Create Account</button>
-          </form >
+          </form>
         </section>
       </div>
     </div>
