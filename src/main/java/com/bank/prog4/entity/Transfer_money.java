@@ -2,7 +2,7 @@ package com.bank.prog4.entity;
 
 import lombok.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Getter
 @AllArgsConstructor
@@ -11,12 +11,11 @@ import java.util.Date;
 @NoArgsConstructor
 public class Transfer_money {
     private int credit_account;
-    private int DEBIT_ACCOUNT;
+    private int debit_account;
     private double amount;
     private String transfer_reason;
-    private String type;
-    private Date effective_date;
-    private Date registration_date;
+    private java.sql.Date effective_date;
+    private java.sql.Date registration_date;
 
 
 }

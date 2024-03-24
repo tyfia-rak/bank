@@ -24,21 +24,20 @@ public class TransferDAO {
             // Record the transfer
             try (PreparedStatement insertStatement = connection.prepareStatement(INSERT_TRANSFER_QUERY)) {
                 insertStatement.setInt(1, transfer.getCredit_account());
-                insertStatement.setInt(2, transfer.getDEBIT_ACCOUNT());
+                insertStatement.setInt(2, transfer.getDebit_account());
                 insertStatement.setDouble(3, transfer.getAmount());
                 insertStatement.setString(4, transfer.getTransfer_reason());
-                insertStatement.setString(5, transfer.getType());
-                insertStatement.setDate(6, new java.sql.Date(transfer.getEffective_date().getTime()));
-                insertStatement.setDate(7, new java.sql.Date(transfer.getRegistration_date().getTime()));
+                insertStatement.setDate(5, new java.sql.Date(transfer.getEffective_date().getTime()));
+                insertStatement.setDate(6, new java.sql.Date(transfer.getRegistration_date().getTime()));
                 insertStatement.executeUpdate();
             }
 
             // Check if the recipient account is in the same bank
-            if (transfer.getType().equals("internal")) {
+            if (transfer.getAmount()==0) {
                 // Credit money to the receiver's account immediately
                 try (PreparedStatement receiveStatement = connection.prepareStatement(RECEIVE_TRANSFER_QUERY)) {
                     receiveStatement.setDouble(1, transfer.getAmount());
-                    receiveStatement.setInt(2, transfer.getDEBIT_ACCOUNT());
+                    receiveStatement.setInt(2, transfer.getDebit_account());
                     receiveStatement.executeUpdate();
                 }
             } else {
@@ -49,7 +48,7 @@ public class TransferDAO {
                 // Deduct money from the sender's account after 48 hours
                 try (PreparedStatement updateStatement = connection.prepareStatement(UPDATE_ACCOUNT_BALANCE_QUERY)) {
                     updateStatement.setDouble(1, transfer.getAmount());
-                    updateStatement.setInt(2, transfer.getDEBIT_ACCOUNT());
+                    updateStatement.setInt(2, transfer.getDebit_account());
                     updateStatement.executeUpdate();
                 }
             }

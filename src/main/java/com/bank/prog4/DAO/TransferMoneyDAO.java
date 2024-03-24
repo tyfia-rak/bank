@@ -14,11 +14,11 @@ import static com.bank.prog4.ConfigDatabase.DatabaseConfig.getConnection;
 public class TransferMoneyDAO implements GenericDAO<Transfer_money> {
     @Override
     public Transfer_money save(Transfer_money toSave) throws SQLException {
-        String sql = "INSERT INTO \"Transfer_money\" (CREDIT_ACCOUNT,DEBIT_ACCOUNT, AMOUNT, TRANSFER_REASON, TYPE, EFFECTIVE_DATE,REGISTRATION_DATE)"
-                + " VALUES (?,?,?,?,?,?,?)"
+        String sql = "INSERT INTO \"Transfer_money\" (CREDIT_ACCOUNT,DEBIT_ACCOUNT, AMOUNT, TRANSFER_REASON, EFFECTIVE_DATE,REGISTRATION_DATE)"
+                + " VALUES (?,?,?,?,?,?)"
                 + " ON CONFLICT (id)"
                 + " DO UPDATE SET CREDIT_ACCOUNT = EXCLUDED.CREDIT_ACCOUNT,DEBIT_ACCOUNT = EXCLUDED.DEBIT_ACCOUNT,AMOUNT = EXCLUDED.AMOUNT,"
-                +"TRANSFER_REASON = EXCLUDED.TRANSFER_REASON,  TYPE = EXCLUDED.TYPE,EFFECTIVE_DATE = EXCLUDED.EFFECTIVE_DATE,"
+                +"TRANSFER_REASON = EXCLUDED.TRANSFER_REASON, EFFECTIVE_DATE = EXCLUDED.EFFECTIVE_DATE,"
                 +"REGISTRATION_DATE = EXCLUDED.REGISTRATION_DATE"
                 + " RETURNING id";
 
@@ -26,12 +26,11 @@ public class TransferMoneyDAO implements GenericDAO<Transfer_money> {
         try (Connection connection = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, toSave.getCredit_account());
-            preparedStatement.setInt(2,toSave.getDEBIT_ACCOUNT());
+            preparedStatement.setInt(2,toSave.getDebit_account());
             preparedStatement.setDouble(3,toSave.getAmount());
             preparedStatement.setString(4,toSave.getTransfer_reason());
-            preparedStatement.setString(5,toSave.getType());
-            preparedStatement.setDate(6, (Date) toSave.getEffective_date());
-            preparedStatement.setDate(7, (Date) toSave.getRegistration_date());
+            preparedStatement.setDate(5,  toSave.getEffective_date());
+            preparedStatement.setDate(6,  toSave.getRegistration_date());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -59,14 +58,13 @@ public class TransferMoneyDAO implements GenericDAO<Transfer_money> {
 
 
                     int credit_account = resultSet.getInt("credit_account");
-                    int account_receivable = resultSet.getInt("DEBIT_ACCOUNT");
+                    int account_receivable = resultSet.getInt("debit_account");
                     Double amount = resultSet.getDouble("amount");
                     String reason = resultSet.getString("transfer_reason");
-                    String type = resultSet.getString("type");
                     java.sql.Date effective_date = resultSet.getDate("effective_date");
                     java.sql.Date registration_date = resultSet.getDate("registration_date");
 
-                    transferMoney = new Transfer_money(credit_account,account_receivable,amount,reason,type,effective_date,registration_date);
+                    transferMoney = new Transfer_money(credit_account,account_receivable,amount,reason,effective_date,registration_date);
                 }
             }
         }

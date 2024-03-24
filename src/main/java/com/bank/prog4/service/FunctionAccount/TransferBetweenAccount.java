@@ -15,24 +15,39 @@ public class TransferBetweenAccount {
         AccountDAO accountDAO = new AccountDAO();
         TransferMoneyDAO transferMoneyDAO = new TransferMoneyDAO();
 
-        Account senderAccount = accountDAO.selectById(transferMoney.getDEBIT_ACCOUNT());
+        Account senderAccount = accountDAO.selectById(transferMoney.getDebit_account());
         Account debitAccount = accountDAO.selectById(transferMoney.getCredit_account());
 
 
-        if ("credit".equals(transferMoney.getType())) {
-            Double amount = senderAccount.getBankBalance() - transferMoney.getAmount();
-            if (amount < 0) {
-                return "insufficient balance";
-            } else {
+        Double amount = senderAccount.getBankBalance() - transferMoney.getAmount();
+        if (amount < 0) {
+            return "insufficient balance";
+        }
+
+        if(!isSamBank(senderAccount,debitAccount)){
+            return "wait 48 hours";
+        }
+        else {
+            if(isSamBank(senderAccount, debitAccount)){
                 senderAccount.setBankBalance(amount);
                 debitAccount.setBankBalance(debitAccount.getBankBalance() + transferMoney.getAmount());
                 accountDAO.save(senderAccount);
                 accountDAO.save(debitAccount);
                 transferMoneyDAO.save(transferMoney);
                 return "credit";
+            }else {
+                return "Wait 48 hours";
             }
-        } else if ("debit".equals(transferMoney.getType())) {
-            if (isSamBank(senderAccount, debitAccount)) {
+        }
+
+    }
+
+    public boolean isSamBank (Account senderAccount, Account debitAccount){
+        return senderAccount.getBankName().equals(debitAccount.getBankName());
+    }
+}
+/*
+            }if (isSamBank(senderAccount, debitAccount)) {
 
                 senderAccount.setBankBalance(senderAccount.getBankBalance() - transferMoney.getAmount());
                 accountDAO.save(senderAccount);
@@ -40,15 +55,10 @@ public class TransferBetweenAccount {
                 return "Wait 48 hours";
 
             }
-            transferMoneyDAO.save(transferMoney);
-            return "debit";
-        }
-        return "success";
-    }
-    public boolean isSamBank (Account senderAccount, Account debitAccount){
-        return senderAccount.getBankName().equals(debitAccount.getBankName());
-    }
-    public static void main(String[] args) throws SQLException {
+          */
+
+ /*
+     public static void main(String[] args) throws SQLException {
         Date date = Date.valueOf("2024-12-12");
         Date date1 = Date.valueOf("2024-12-11");
 
@@ -57,5 +67,7 @@ public class TransferBetweenAccount {
         TransferBetweenAccount transferBetweenAccount = new TransferBetweenAccount();
         System.out.println(transferBetweenAccount.TransferAccount(transferMoney));
 
+
+
     }
-}
+     */
