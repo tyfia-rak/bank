@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import DetailsComponent from './components/DetailsAccount';
 import IncomingTransferForm from './components/TransactionOtherBank';
+import TransferForm from './components/TransactionBetweenAccount';
 
 
 
@@ -28,6 +29,7 @@ function App() {
     </Router>
     <Account/>
     <IncomingTransferForm/>
+    <TransferForm/>
   
     </div>
     
