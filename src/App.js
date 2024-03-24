@@ -14,11 +14,9 @@ import IncomingTransferForm from './components/TransactionOtherBank';
 import TransferForm from './components/TransactionBetweenAccount';
 import WithdrawForm from './components/Retreat';
 
-
-
 function App() {
   return (
-    <div className="App" id="outer-container">
+    <>
       <Header/>
       <DetailsComponent/>
       <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
@@ -32,9 +30,8 @@ function App() {
     <IncomingTransferForm/>
     <TransferForm/>
     <WithdrawForm/>
+    </>
   
-    </div>
-    
     
   );
 }
