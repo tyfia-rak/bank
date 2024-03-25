@@ -27,7 +27,7 @@ function Account() {
       setFormData({
         firstName: "",
         lastName: "",
-        birthDate: "",
+        birthday: "",
         bankBalance: "",
         salaryAmount: "",
         bank: "",
@@ -56,15 +56,10 @@ function Account() {
             <input required name="birthDate" type="date" value={formData.birthDate} onChange={handleChange} />
             <label htmlFor="bankbalance">Bank balance</label>
             <input required name="bankBalance" type="number" value={formData.bankBalance} onChange={handleChange} />
+            <label htmlFor="bankname">Bank Name</label>
+            <input required name="bankName" type="text" value={formData.salaryAmount} onChange={handleChange} />
             <label htmlFor="salaryamount">Salary amount</label>
             <input required name="salaryAmount" type="number" value={formData.salaryAmount} onChange={handleChange} />
-            <label htmlFor="bank">Choose bank</label>
-            <select name="bank" value={formData.bank} onChange={handleChange}>
-              <option value=""></option>
-              <option value="BMOI">BMOI</option>
-              <option value="BNI">BNI</option>
-              <option value="BOA">BOA</option>
-            </select>
             <label htmlFor="overdraw">Choose Overdraw</label>
             <select name="overdraw" value={formData.overdraw} onChange={handleChange}>
               <option value=""></option>
