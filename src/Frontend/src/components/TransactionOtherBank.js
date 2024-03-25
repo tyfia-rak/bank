@@ -37,7 +37,7 @@ function IncomingTransferForm() {
 
   return (
     <div>
-      <h2>Enter Incoming Transfer Information</h2>
+      <h2>Enter Incoming Transfer Other Bank</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Account ID:

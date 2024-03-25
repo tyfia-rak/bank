@@ -43,7 +43,7 @@ function TransferForm() {
 
   return (
     <div>
-      <h2>Formulaire de transfert</h2>
+      <h2>Transfer Between account</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Compte créditeur:</label>

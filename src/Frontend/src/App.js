@@ -13,6 +13,7 @@ import DetailsComponent from './components/DetailsAccount';
 import IncomingTransferForm from './components/TransactionOtherBank';
 import TransferForm from './components/TransactionBetweenAccount';
 import WithdrawForm from './components/Retreat';
+import AccountForm from './components/InsertAccount';
 
 
 
@@ -28,7 +29,7 @@ function App() {
           <Route exact path='/new' Component={Account}/>
       </Routes>
     </Router>
-    <Account/>
+    <AccountForm/>
     <IncomingTransferForm/>
     <TransferForm/>
     <WithdrawForm/>
