@@ -3,6 +3,7 @@ package com.bank.prog4.entity;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Getter
@@ -10,6 +11,7 @@ import java.sql.Date;
 @ToString
 @NoArgsConstructor
 public class Account  {
+    private int id;
     private String firstName;
     private String lastName;
     private Date birthday;
