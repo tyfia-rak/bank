@@ -108,10 +108,14 @@ components:
         interest_rate_subsequent_days:
           type: number
           description: Interest rate for subsequent days of overdraft
-          
+
     BalanceResponse:
       type: object
       properties:
+        date:
+          type: string
+          format: date
+          description: Date for which balance snapshot is recorded
         main_balance:
           type: number
           description: Principal balance available in the account
