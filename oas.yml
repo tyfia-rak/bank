@@ -96,6 +96,13 @@ components:
         accountNumber:
           type: string
           description: Unique account number
+        overdraft_enabled:
+          type: boolean
+          description: Indicates if overdraft option is enabled for the account
+        overdraft_limit:
+          type: number
+          description: Maximum overdraft limit allowed
+          
     WithdrawalRequest:
       type: object
       properties:
