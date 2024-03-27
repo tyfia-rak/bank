@@ -56,6 +56,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+
+  /withdrawal:
+    post:
+      summary: Perform a money withdrawal
+      tags:
+        - Withdrawals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WithdrawalRequest'
+      responses:
+        '200':
+          description: Success - Withdrawal performed successfully
+
 components:
   schemas:
     Account:
