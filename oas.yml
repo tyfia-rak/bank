@@ -102,6 +102,12 @@ components:
         overdraft_limit:
           type: number
           description: Maximum overdraft limit allowed
+        interest_rate_first_7_days:
+          type: number
+          description: Interest rate for the first 7 days of overdraft
+        interest_rate_subsequent_days:
+          type: number
+          description: Interest rate for subsequent days of overdraft
           
     WithdrawalRequest:
       type: object
