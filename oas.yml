@@ -109,6 +109,19 @@ components:
           type: number
           description: Interest rate for subsequent days of overdraft
           
+    BalanceResponse:
+      type: object
+      properties:
+        main_balance:
+          type: number
+          description: Principal balance available in the account
+        loan_balance:
+          type: number
+          description: Amount borrowed from the bank (if overdraft is enabled)
+        loan_interest:
+          type: number
+          description: Interest accrued on borrowed amount
+
     WithdrawalRequest:
       type: object
       properties:
