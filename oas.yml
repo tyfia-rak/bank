@@ -80,3 +80,20 @@ components:
         accountNumber:
           type: string
           description: Unique account number
+    WithdrawalRequest:
+      type: object
+      properties:
+        account_id:
+          type: string
+          description: Account identifier
+        withdrawal_amount:
+          type: number
+          description: Amount to withdraw
+        withdrawal_datetime:
+          type: string
+          format: date-time
+          description: Date and time of the withdrawal
+      required:
+        - account_id
+        - withdrawal_amount
+        - withdrawal_datetime
