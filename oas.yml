@@ -165,3 +165,28 @@ components:
         - account_id
         - withdrawal_amount
         - withdrawal_datetime
+
+    DepositRequest:
+      type: object
+      properties:
+        amount:
+          type: number
+          description: Amount to deposit
+        source:
+          type: string
+          description: Source of the deposit (e.g., external bank, internal account)
+        reason:
+          type: string
+          description: Reason for the deposit
+        effective_date:
+          type: string
+          format: date
+          description: Date when the deposit will take effect
+        registration_date:
+          type: string
+          format: date
+          description: Date when the deposit is recorded
+      required:
+        - amount
+        - source
+        - effective_date
