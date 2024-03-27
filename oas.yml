@@ -94,6 +94,21 @@ paths:
         '200':
           description: Success - Withdrawal performed successfully
 
+  /deposits:
+    post:
+      summary: Make a deposit into the account
+      tags:
+        - Deposits
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepositRequest'
+      responses:
+        '200':
+          description: Success - Deposit made successfully
+
 components:
   schemas:
     Account:
@@ -174,7 +189,7 @@ components:
           description: Amount to deposit
         source:
           type: string
-          description: Source of the deposit (e.g., external bank, internal account)
+          description: Source of the deposit (external bank, internal account)
         reason:
           type: string
           description: Reason for the deposit
