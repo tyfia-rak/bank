@@ -57,6 +57,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/Account'
 
+  /balances:
+    get:
+      summary: Get current balance or balance history
+      tags:
+        - Balances
+      parameters:
+        - name: date
+          in: query
+          description: Date for which balance is requested (YYYY-MM-DD format)
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Success - Balance retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BalanceSnapshot'
+
   /withdrawal:
     post:
       summary: Perform a money withdrawal
@@ -109,7 +131,7 @@ components:
           type: number
           description: Interest rate for subsequent days of overdraft
 
-    BalanceResponse:
+    BalanceSnapshot:
       type: object
       properties:
         date:
