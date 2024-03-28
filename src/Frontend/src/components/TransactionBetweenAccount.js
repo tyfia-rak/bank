@@ -21,7 +21,7 @@ function TransferForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+   try{
     axios.post('http://localhost:8080/Transfer_account', formData, {
       headers: {
         'Content-Type': 'application/json'
@@ -37,88 +37,87 @@ function TransferForm() {
         effective_date: '',
         registration_date: ''
       });
+      console.log(response.data); 
+      alert('Transfer by another Bank')
     })
-    .catch(error => console.error('Erreur lors de l\'envoi des données:', error));
+   }catch (error){
+      console.error('Error submitting data:', error);
+      alert('Error during Tranfer between Account')
+   }
+      
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Transfer Between account</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label>Compte créditeur:</label>
-          <input 
-            type="number" 
-            name="credit_account" 
-            value={formData.credit_account} 
-            onChange={handleChange} 
-            required 
+          <input
+            className="form-control"
+            type="number"
+            name="credit_account"
+            value={formData.credit_account}
+            onChange={handleChange}
+            required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Compte débiteur:</label>
-          <input 
-            type="number" 
-            name="debit_account" 
-            value={formData.debit_account} 
-            onChange={handleChange} 
-            required 
+          <input
+            className="form-control"
+            type="number"
+            name="debit_account"
+            value={formData.debit_account}
+            onChange={handleChange}
+            required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Montant:</label>
-          <input 
-            type="number" 
-            name="amount" 
-            value={formData.amount} 
-            onChange={handleChange} 
-            required 
+          <input
+            className="form-control"
+            type="number"
+            name="amount"
+            value={formData.amount}
+            onChange={handleChange}
+            required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Raison du transfert:</label>
-          <input 
-            type="text" 
-            name="transfer_reason" 
-            value={formData.transfer_reason} 
-            onChange={handleChange} 
-            required 
+          <input
+            className="form-control"
+            type="text"
+            name="transfer_reason"
+            value={formData.transfer_reason}
+            onChange={handleChange}
+            required
           />
         </div>
-        <div>
-          {/* <label>Type de transfert:</label>
-          <select 
-            name="type" 
-            value={formData.type} 
-            onChange={handleChange} 
-            required 
-          >
-            <option value="">Sélectionner le type</option>
-            <option value="credit">credit</option>
-            <option value="debit">debit</option>
-          </select> */}
-        </div>
-        <div>
+        <div className="form-group">
           <label>Date d'effet:</label>
-          <input 
-            type="date" 
-            name="effective_date" 
-            value={formData.effective_date} 
-            onChange={handleChange} 
-            required 
+          <input
+            className="form-control"
+            type="date"
+            name="effective_date"
+            value={formData.effective_date}
+            onChange={handleChange}
+            required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Date d'enregistrement:</label>
-          <input 
-            type="date" 
-            name="registration_date" 
-            value={formData.registration_date} 
-            onChange={handleChange} 
-            required 
+          <input
+            className="form-control"
+            type="date"
+            name="registration_date"
+            value={formData.registration_date}
+            onChange={handleChange}
+            required
           />
         </div>
-        <button type="submit">Envoyer</button>
+        <button type="submit" className="btn btn-primary">Envoyer</button>
       </form>
     </div>
   );

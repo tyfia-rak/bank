@@ -1,0 +1,39 @@
+Currency
+
+id (SERIAL, PRIMARY KEY)
+name (VARCHAR(200), UNIQUE, NOT NULL)
+code (VARCHAR(3), UNIQUE, NOT NULL)
+Account
+
+id (SERIAL, PRIMARY KEY)
+name (VARCHAR(200), NOT NULL)
+pay (DOUBLE PRECISION, NOT NULL)
+last_update_date_time (TIMESTAMP, DEFAULT CURRENT_TIMESTAMP)
+id_currency (INT, REFERENCES "Currency"(id))
+type (VARCHAR(20), CHECK (type IN ('Banque', 'Espèce', 'Mobile Money')))
+Transaction_category
+
+id (SERIAL, PRIMARY KEY)
+name (VARCHAR(150), NOT NULL)
+items_list (VARCHAR(400))
+Transaction
+
+id (SERIAL, PRIMARY KEY)
+label (VARCHAR(200), NOT NULL)
+amount (DOUBLE PRECISION, NOT NULL)
+date_time (TIMESTAMP, DEFAULT CURRENT_TIMESTAMP)
+type (VARCHAR(10), CHECK (type IN ('debit', 'credit')))
+id_account (INT, REFERENCES "Account"(id))
+id_category (INT, REFERENCES "Transaction_category"(id))
+Account_transaction
+
+id (SERIAL, PRIMARY KEY)
+id_transaction (INT, REFERENCES "Transaction"(id))
+id_account (INT, REFERENCES "Account"(id))
+TransferHistory
+
+id (SERIAL, PRIMARY KEY)
+id_debiteur (INT, REFERENCES "Account"(id))
+id_crediteur (INT, REFERENCES "Account"(id))
+amount (DOUBLE PRECISION)
+date (TIMESTAMP)
