@@ -4,6 +4,8 @@ import com.bank.prog4.ConfigDatabase.DatabaseConfig;
 import com.bank.prog4.Generic.GenericDAO;
 import com.bank.prog4.entity.Account;
 import org.springframework.stereotype.Repository;
+
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,6 +96,20 @@ public class AccountDAO implements GenericDAO<Account> {
             }
         }
         return allAccounts;
+    }
+
+    @Override
+    public Account update(Account update) throws SQLException {
+        String up = "Update \"Account\" set bank_balance = ? where id = ?";
+        try (Connection connection = DatabaseConfig.getConnection();
+        PreparedStatement preparedStatement =connection.prepareStatement(up)){
+            preparedStatement.setDouble(1,update.getBankBalance());
+            preparedStatement.setInt(2,update.getId());
+            preparedStatement.executeUpdate();
+        } {
+
+        }
+        return update;
     }
 }
 

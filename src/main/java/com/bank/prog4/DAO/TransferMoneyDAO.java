@@ -75,4 +75,9 @@ public class TransferMoneyDAO implements GenericDAO<Transfer_money> {
     public List<Transfer_money> findAll() {
         return null;
     }
+
+    @Override
+    public Transfer_money update(Transfer_money update) throws SQLException {
+        return null;
+    }
 }

@@ -24,50 +24,36 @@ public class TransferBetweenAccount {
             return "insufficient balance";
         }
 
-        if(!isSamBank(senderAccount,debitAccount)){
+        if (!isSamBank(senderAccount, debitAccount)) {
             return "wait 48 hours";
-        }
-        else {
-            if(isSamBank(senderAccount, debitAccount)){
+        } else {
+            if (isSamBank(senderAccount, debitAccount)) {
                 senderAccount.setBankBalance(amount);
                 debitAccount.setBankBalance(debitAccount.getBankBalance() + transferMoney.getAmount());
-                accountDAO.save(senderAccount);
-                accountDAO.save(debitAccount);
+                accountDAO.update(debitAccount);
+                accountDAO.update(senderAccount);
                 transferMoneyDAO.save(transferMoney);
                 return "credit";
-            }else {
+            } else {
                 return "Wait 48 hours";
             }
         }
 
     }
 
-    public boolean isSamBank (Account senderAccount, Account debitAccount){
+    public boolean isSamBank(Account senderAccount, Account debitAccount) {
         return senderAccount.getBankName().equals(debitAccount.getBankName());
     }
-}
 /*
-            }if (isSamBank(senderAccount, debitAccount)) {
-
-                senderAccount.setBankBalance(senderAccount.getBankBalance() - transferMoney.getAmount());
-                accountDAO.save(senderAccount);
-            } else {
-                return "Wait 48 hours";
-
-            }
-          */
-
- /*
-     public static void main(String[] args) throws SQLException {
+public static void main(String[] args) throws SQLException {
         Date date = Date.valueOf("2024-12-12");
         Date date1 = Date.valueOf("2024-12-11");
 
-        Transfer_money transferMoney = new Transfer_money(3,5,2500.00,"no reason","credit",date,date1);
+        Transfer_money transferMoney = new Transfer_money(2, 3, 50000, "no reason", date, date1);
 
         TransferBetweenAccount transferBetweenAccount = new TransferBetweenAccount();
         System.out.println(transferBetweenAccount.TransferAccount(transferMoney));
-
-
-
     }
-     */
+ */
+
+}
