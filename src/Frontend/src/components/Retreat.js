@@ -35,12 +35,13 @@ function WithdrawForm() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Retreat Money</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="amount">Amount:</label>
           <input
+            className="form-control"
             type="number"
             id="amount"
             name="amount"
@@ -49,9 +50,10 @@ function WithdrawForm() {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="transaction_date">Transaction Date:</label>
           <input
+            className="form-control"
             type="date"
             id="transaction_date"
             name="transaction_date"
@@ -60,9 +62,10 @@ function WithdrawForm() {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="id_account">Account ID:</label>
           <input
+            className="form-control"
             type="text"
             id="id_account"
             name="id_account"
@@ -71,7 +74,7 @@ function WithdrawForm() {
             required
           />
         </div>
-        <button type="submit">Withdraw</button>
+        <button type="submit" className="btn btn-primary">Withdraw</button>
       </form>
     </div>
   );

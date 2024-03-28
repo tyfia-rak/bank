@@ -21,6 +21,7 @@ function IncomingTransferForm() {
     try {
       const response = await axios.post('http://localhost:8080/other_bank', formData);
       console.log(response.data); 
+      alert('Transfer by another Bank')
       
       setFormData({
         id_account: '',
@@ -32,77 +33,49 @@ function IncomingTransferForm() {
       });
     } catch (error) {
       console.error('Error submitting data: ', error);
+      alert('Error during transfer')
+
     }
   };
 
   return (
-    <div>
-      <h2>Enter Incoming Transfer Other Bank</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Account ID:
-          <input
-            type="number"
-            name="id_account"
-            value={formData.id_account}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Amount:
-          <input
-            type="number"
-            name="amount"
-            value={formData.amount}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Bank Name:
-          <input
-            type="text"
-            name="bank_name"
-            value={formData.bank_name}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Transfer Reason:
-          <input
-            type="text"
-            name="transfer_reason"
-            value={formData.transfer_reason}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Effective Date:
-          <input
-            type="date"
-            name="effective_date"
-            value={formData.effective_date}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Registration Date:
-          <input
-            type="date"
-            name="registration_date"
-            value={formData.registration_date}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
-}
+    <div className="container">
+        <h2>Enter Incoming Transfer Other Bank</h2>
+        <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+                <label htmlFor="id_account" className="form-label">Account ID:</label>
+                <input type="number" className="form-control" id="id_account" name="id_account" value={formData.id_account} onChange={handleChange} />
+            </div>
 
+            <div className="mb-3">
+                <label htmlFor="amount" className="form-label">Amount:</label>
+                <input type="number" className="form-control" id="amount" name="amount" value={formData.amount} onChange={handleChange} />
+            </div>
+
+            <div className="mb-3">
+                <label htmlFor="bank_name" className="form-label">Bank Name:</label>
+                <input type="text" className="form-control" id="bank_name" name="bank_name" value={formData.bank_name} onChange={handleChange} />
+            </div>
+
+            <div className="mb-3">
+                <label htmlFor="transfer_reason" className="form-label">Transfer Reason:</label>
+                <input type="text" className="form-control" id="transfer_reason" name="transfer_reason" value={formData.transfer_reason} onChange={handleChange} />
+            </div>
+
+            <div className="mb-3">
+                <label htmlFor="effective_date" className="form-label">Effective Date:</label>
+                <input type="date" className="form-control" id="effective_date" name="effective_date" value={formData.effective_date} onChange={handleChange} />
+            </div>
+
+            <div className="mb-3">
+                <label htmlFor="registration_date" className="form-label">Registration Date:</label>
+                <input type="date" className="form-control" id="registration_date" name="registration_date" value={formData.registration_date} onChange={handleChange} />
+            </div>
+
+            <button type="submit" className="btn btn-primary">Submit</button>
+        </form>
+    </div>
+);
+  
+}
 export default IncomingTransferForm;
