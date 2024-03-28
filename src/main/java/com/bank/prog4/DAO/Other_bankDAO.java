@@ -78,4 +78,9 @@ public class Other_bankDAO implements GenericDAO<Other_bank> {
     public List<Other_bank> findAll() {
         return null;
     }
+
+    @Override
+    public Other_bank update(Other_bank update) throws SQLException {
+        return null;
+    }
 }
