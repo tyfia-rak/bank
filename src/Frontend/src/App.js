@@ -14,6 +14,7 @@ import IncomingTransferForm from './components/TransactionOtherBank';
 import TransferForm from './components/TransactionBetweenAccount';
 import WithdrawForm from './components/Retreat';
 import AccountForm from './components/InsertAccount';
+import AllRetreat from './components/ListRetreat';
 
 
 
@@ -33,7 +34,7 @@ function App() {
     <IncomingTransferForm/>
     <TransferForm/>
     <WithdrawForm/>
-  
+    <AllRetreat/>
     </div>
     
     
