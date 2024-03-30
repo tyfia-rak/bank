@@ -51,10 +51,10 @@ public class RetreatDAO implements GenericDAO<Retreat> {
 
     @Override
     public List<Retreat> findAll() throws SQLException {
-        String allAccount = "SELECT * FROM \"Retreat\"";
+        String allretreat = "SELECT * FROM \"Retreat\"";
         List<Retreat> allRetreat = new ArrayList<>();
 
-        try (PreparedStatement statement = getConnection().prepareStatement(allAccount);
+        try (PreparedStatement statement = getConnection().prepareStatement(allretreat);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
