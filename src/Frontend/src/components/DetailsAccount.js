@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/esm/Table';
 
 const DetailsComponent = () => {
   const [details, setDetails] = useState(null);
-  const accountId = 1; // Remplacez 123 par l'ID du compte que vous souhaitez récupérer
+  const accountId = 2; 
 
   useEffect(() => {
     const fetchAccountDetails = async () => {
