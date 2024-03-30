@@ -8,6 +8,9 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 public class Details {
+    private int id_account;
+    private String firstName;
+    private String lastName;
     private double bankBalance;
     private double loans;
     private double interest;
