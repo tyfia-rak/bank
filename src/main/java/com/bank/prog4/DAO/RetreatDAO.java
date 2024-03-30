@@ -2,11 +2,16 @@ package com.bank.prog4.DAO;
 
 import com.bank.prog4.ConfigDatabase.DatabaseConfig;
 import com.bank.prog4.Generic.GenericDAO;
+import com.bank.prog4.entity.Account;
 import com.bank.prog4.entity.Retreat;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
+import static com.bank.prog4.ConfigDatabase.DatabaseConfig.getConnection;
+@Repository
 public class RetreatDAO implements GenericDAO<Retreat> {
     @Override
     public Retreat save(Retreat toSave) throws SQLException {
@@ -45,8 +50,24 @@ public class RetreatDAO implements GenericDAO<Retreat> {
     }
 
     @Override
-    public List<Retreat> findAll() {
-        return null;
+    public List<Retreat> findAll() throws SQLException {
+        String allAccount = "SELECT * FROM \"Retreat\"";
+        List<Retreat> allRetreat = new ArrayList<>();
+
+        try (PreparedStatement statement = getConnection().prepareStatement(allAccount);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                double amount = resultSet.getDouble("amount");
+                java.sql.Date date = resultSet.getDate("date");
+                int id_account = resultSet.getInt("id_account");
+
+
+                Retreat retreat = new Retreat( id,amount,date,id_account);
+                allRetreat.add(retreat);
+            }
+        }
+        return allRetreat;
     }
 
     @Override
