@@ -1,4 +1,4 @@
-import '../Styles/style.css'
+import '../../Styles/style.css'
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -23,7 +23,7 @@ function Account() {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:8080/insert_account', formData); 
-      console.log('Compte créé avec succès:', response.data);
+      console.log('Account succesfully inserted:', response.data);
       setFormData({
         firstName: "",
         lastName: "",
@@ -34,8 +34,8 @@ function Account() {
         overdraw: ""
       });
     } catch (error) {
-      console.error('Erreur lors de la création du compte:', error);
-      setError("Une erreur s'est produite lors de la création du compte. Veuillez réessayer plus tard.");
+      console.error('Error during insertion:', error);
+      setError("Error");
     }
   };
 
