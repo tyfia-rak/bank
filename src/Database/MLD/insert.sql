@@ -8,7 +8,7 @@ VALUES ('John', 'Doe', '1990-05-15', 50000.00, 'ABC Bank', 6000.00,true),
 ----------------------
 
 --------Retreat-------
-INSERT INTO "Retreat" (AMOUNT, DATE_TRANSACTION, id_account)
+INSERT INTO "Retreat" (AMOUNT, DATE, id_account)
 VALUES (1000.00, '2024-03-01', 1),
        (500.00, '2024-03-05', 2),
        (1200.00, '2024-03-10', 3),
