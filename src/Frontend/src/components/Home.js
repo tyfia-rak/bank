@@ -2,7 +2,7 @@ import IncomingTransferForm from './Transaction_other_bank/TransactionOtherBank'
 import TransferForm from './Transaction_between_account/TransactionBetweenAccount';
 import WithdrawForm from './Transaction_Retreat/Retreat';
 import AboutAccount from './Account/About_account';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar/Sidebar';
 import Header from './Account/Header';
 
 
