@@ -17,7 +17,7 @@ public class IncomingTransferExternalBank {
         Account account = accountDAO.selectById(otherBank.getId_account());
         double more = account.getBankBalance()+otherBank.getAmount();
         account.setBankBalance(more);
-        accountDAO.save(account);
+        accountDAO.update(account);
         otherBankDAO.save(otherBank);
         return "Transaction effectued";
     }
