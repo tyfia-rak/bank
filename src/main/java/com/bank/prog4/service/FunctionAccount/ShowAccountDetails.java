@@ -29,8 +29,8 @@ public class ShowAccountDetails {
             }
         }
     }
-/*
-public static void main(String[] args) {
+
+    public static void main(String[] args) {
         ShowAccountDetails showAccountDetails = new ShowAccountDetails();
 
         int accountId = 1;
@@ -51,7 +51,5 @@ public static void main(String[] args) {
             e.printStackTrace();
         }
     }
- */
-
 }
 
