@@ -35,7 +35,7 @@ function WithdrawForm() {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ padding:'20px' }}>
       <h2>Retreat Money</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

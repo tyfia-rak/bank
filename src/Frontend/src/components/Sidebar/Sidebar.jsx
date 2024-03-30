@@ -112,36 +112,8 @@ const Text = styled.span`
   transition: all 0.3s ease;
 `;
 
-const Profile = styled.div`
-  width: ${(props) => (props.clicked ? "14rem" : "3rem")};
-  height: 3rem;
-  padding: 0.5rem 1rem;
-  /* border: 2px solid var(--white); */
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: ${(props) => (props.clicked ? "9rem" : "0")};
-  background-color: var(--black);
-  color: var(--white);
-  transition: all 0.3s ease;
-  img {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-    &:hover {
-      border: 2px solid var(--grey);
-      padding: 2px;
-    }
-  }
-`;
 
-const Details = styled.div`
-  display: ${(props) => (props.clicked ? "flex" : "none")};
-  justify-content: space-between;
-  align-items: center;
-`;
+
 /**
  * const Name = styled.div`
   padding: 0 1.5rem;
@@ -164,31 +136,12 @@ const Details = styled.div`
  */
 
 
-const Logout = styled.button`
-  border: none;
-  width: 2rem;
-  height: 2rem;
-  background-color: transparent;
-  svg {
-    width: 100%;
-    height: auto;
-    filter: invert(15%) sepia(70%) saturate(6573%) hue-rotate(2deg)
-      brightness(100%) contrast(126%);
-    transition: all 0.3s ease;
-    &:hover {
-      border: none;
-      padding: 0;
-      opacity: 0.5;
-    }
-  }
-`;
+
 
 const Sidebar = () => {
   const [click, setClick] = React.useState(false);
   const handleClick = () => setClick(!click);
 
-  const [profileClick, setprofileClick] = React.useState(false);
-  const handleProfileClick = () => setprofileClick(!profileClick);
 
   return (
     <Container>
@@ -216,6 +169,18 @@ const Sidebar = () => {
             activeClassName="active"
             to="/team"
           >
+            
+      <svg viewBox="0 0 512 512" width="100" title="book-reader">
+  <path d="M352 96c0-53.02-42.98-96-96-96s-96 42.98-96 96 42.98 96 96 96 96-42.98 96-96zM233.59 241.1c-59.33-36.32-155.43-46.3-203.79-49.05C13.55 191.13 0 203.51 0 219.14v222.8c0 14.33 11.59 26.28 26.49 27.05 43.66 2.29 131.99 10.68 193.04 41.43 9.37 4.72 20.48-1.71 20.48-11.87V252.56c-.01-4.67-2.32-8.95-6.42-11.46zm248.61-49.05c-48.35 2.74-144.46 12.73-203.78 49.05-4.1 2.51-6.41 6.96-6.41 11.63v245.79c0 10.19 11.14 16.63 20.54 11.9 61.04-30.72 149.32-39.11 192.97-41.4 14.9-.78 26.49-12.73 26.49-27.06V219.14c-.01-15.63-13.56-28.01-29.81-27.09z" />
+</svg>
+<Text clicked={click} > <Link to="/Approvisionment" style={{textDecoration: 'none',color: 'inherit'}}>Approvisionement</Link></Text>
+          </Item>
+          <Item
+            onClick={() => setClick(false)}
+            activeClassName="active"
+            to="/team"
+          >
+            
       <svg viewBox="0 0 512 512" width="100" title="book-reader">
   <path d="M352 96c0-53.02-42.98-96-96-96s-96 42.98-96 96 42.98 96 96 96 96-42.98 96-96zM233.59 241.1c-59.33-36.32-155.43-46.3-203.79-49.05C13.55 191.13 0 203.51 0 219.14v222.8c0 14.33 11.59 26.28 26.49 27.05 43.66 2.29 131.99 10.68 193.04 41.43 9.37 4.72 20.48-1.71 20.48-11.87V252.56c-.01-4.67-2.32-8.95-6.42-11.46zm248.61-49.05c-48.35 2.74-144.46 12.73-203.78 49.05-4.1 2.51-6.41 6.96-6.41 11.63v245.79c0 10.19 11.14 16.63 20.54 11.9 61.04-30.72 149.32-39.11 192.97-41.4 14.9-.78 26.49-12.73 26.49-27.06V219.14c-.01-15.63-13.56-28.01-29.81-27.09z" />
 </svg>
@@ -238,21 +203,11 @@ const Sidebar = () => {
             activeClassName="active"  
             to="/projects"
           >
+            
    
           </Item>
         </SlickBar>
 
-        <Profile clicked={profileClick}>
-          <img
-            onClick={() => handleProfileClick()}
-            src="https://picsum.photos/200"
-            alt="Profile"
-          />
-          <Details clicked={profileClick}>
-            <Logout>  
-            </Logout>
-          </Details>
-        </Profile>
       </SidebarContainer>
     </Container>
   );

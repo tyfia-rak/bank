@@ -22,7 +22,7 @@ const DetailsComponent = () => {
   return (
 <div>
       {details ? (
-        <Table striped bordered hover variant="white"style={{ width: '50%'}}>
+        <Table striped bordered hover variant="white"style={{ width: '20vw',marginLeft:'60vw' }}>
           <thead>
             <tr>
               <th>Account: {accountId}</th>
@@ -31,7 +31,15 @@ const DetailsComponent = () => {
           </thead>
           <tbody>
             <tr>
-              <td>Bank Balance</td>
+              <td>Firt name</td>
+              <td>{details.firstName}</td>
+            </tr>
+            <tr>
+              <td>Last name</td>
+              <td>{details.lastName}</td>
+            </tr>
+            <tr>
+              <td>Amount</td>
               <td>{details.bankBalance}</td>
             </tr>
             <tr>
