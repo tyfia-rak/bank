@@ -15,26 +15,25 @@ import static com.bank.prog4.ConfigDatabase.DatabaseConfig.getConnection;
 public class RetreatDAO implements GenericDAO<Retreat> {
     @Override
     public Retreat save(Retreat toSave) throws SQLException {
-        String sql = "INSERT INTO \"Retreat\" (id,amount , date, id_account)"
-                + " VALUES (?,?,?,?)"
+        String sql = "INSERT INTO \"Retreat\" (amount , date, id_account)"
+                + " VALUES (?,?,?)"
                 + " ON CONFLICT (id)"
-                + " DO UPDATE SET id = EXCLUDED.ID, amount = EXCLUDED.AMOUNT,date = EXCLUDED.DATE,"
+                + " DO UPDATE SET amount = EXCLUDED.AMOUNT,date = EXCLUDED.DATE,"
                 + "ID_ACCOUNT = EXCLUDED.ID_ACCOUNT"
                 + " RETURNING id";
 
 
         try (Connection connection = DatabaseConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1,toSave.getId());
-            preparedStatement.setDouble(2,toSave.getAmount());
-            preparedStatement.setDate(  3, toSave.getTransaction_date());
-            preparedStatement.setInt(  4, toSave.getId_account());
+            preparedStatement.setDouble(1,toSave.getAmount());
+            preparedStatement.setDate(  2, toSave.getTransaction_date());
+            preparedStatement.setInt(  3, toSave.getId_account());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 int generatedId = resultSet.getInt(1);
-                toSave.setId(generatedId);
+                toSave.setAmount(generatedId);
             }
 
             return toSave;
@@ -57,13 +56,12 @@ public class RetreatDAO implements GenericDAO<Retreat> {
         try (PreparedStatement statement = getConnection().prepareStatement(allretreat);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
                 double amount = resultSet.getDouble("amount");
                 java.sql.Date date = resultSet.getDate("date");
                 int id_account = resultSet.getInt("id_account");
 
 
-                Retreat retreat = new Retreat( id,amount,date,id_account);
+                Retreat retreat = new Retreat( amount,date,id_account);
                 allRetreat.add(retreat);
             }
         }

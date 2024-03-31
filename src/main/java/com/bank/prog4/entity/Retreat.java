@@ -10,7 +10,7 @@ import java.sql.Date;
 @ToString
 @NoArgsConstructor
 public class Retreat {
-    private int id;
+
     private double amount;
     private Date transaction_date;
     private int id_account;
