@@ -20,6 +20,7 @@ function AllTranferMoney() {
 
     return (
         <>
+        <h2>History Transfer Money</h2>   
             <Table striped bordered hover variant="white" style={{ width: '50%', marginTop: '10vh' }}>
                 <thead>
                     <tr>

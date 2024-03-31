@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 
 function AllRetreat() {
-    const [retreat, setRetreat] = useState([]);
+    const [HistoryRetreat, setHistoryRetreat] = useState([]);
 
     useEffect(() => {
         fetchRetreats();
@@ -11,8 +11,8 @@ function AllRetreat() {
 
     const fetchRetreats = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/all_retreat');
-            setRetreat(response.data);
+            const response = await axios.get('http://localhost:8080/history_retreat');
+            setHistoryRetreat(response.data);
         } catch (error) {
             console.error('Error:', error);
         }
@@ -20,22 +20,26 @@ function AllRetreat() {
 
     return (
         <>
+        <h2>History Retreat</h2>
             <Table striped bordered hover variant="white" style={{ width: '50%', marginTop: '10vh' }}>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>ID Retreat</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Amount</th>
-                        <th>transaction_date</th>
-                        <th>ID_ACCOUNT</th>
+                        <th>Transaction Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {retreat.map(retreats => (
-                        <tr key={retreats.id}>
-                            <td>{retreats.id}</td>
-                            <td>{retreats.amount}</td>
-                            <td>{retreats.transaction_date}</td>
-                            <td>{retreats.id_account}</td>
+                    {HistoryRetreat.map(history => (
+                        <tr key={history.id}>
+                            <td>{history.id}</td>
+                            <td>{history.firstName}</td>
+                            <td>{history.lastName}</td>
+                            <td>{history.amount}</td>
+                            <td>{history.transaction_date}</td>
+
                         </tr>
                     ))}
                 </tbody>
