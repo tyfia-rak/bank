@@ -36,7 +36,7 @@ VALUES ('123456789', 500.00, 'External Bank A', 'Purchase', '2024-03-02', '2024-
 
 
 ------------Transaction------------
-INSERT INTO "Transaction" (ID, DATE_TRANSACTION, REFERENCE, MOTIF, CREDIT, DEBIT, id_transaction)
+INSERT INTO "Transaction" (ID, DATE_TRANSACTION, REFERENCE, MOTIF, CREDIT, DEBIT, id_account)
 VALUES (1, '2024-03-01', 'REF123', 'Salary Payment', 6000.00, 0.00, 1),
        (2, '2024-03-05', 'REF456', 'Purchase', 0.00, 500.00, 2),
        (3, '2024-03-10', 'REF789', 'Investment', 0.00, 1200.00, 3),
@@ -44,11 +44,7 @@ VALUES (1, '2024-03-01', 'REF123', 'Salary Payment', 6000.00, 0.00, 1),
        (5, '2024-03-20', 'REF345', 'Miscellaneous', 0.00, 2000.00, 5);
 -------------------------------------
 
-    {
-  "fist_name": "Rado",
-  "last_name": "dslfkj",
-  "birthday": "23-09-04",
-  "bank_balance": 5000.00,
-  "bank_name": "qslf",
-  "salary_amount": 233300.00
-}
+-------------Transfer Money----------
+INSERT INTO "Transfer_money" ( credit_account,  debit_account, amount, transfer_reason, effective_date, registration_date)
+VALUES ( 1, 2, 1250.00, 'no reason', '2024-12-12', '2024-12-12');
+

@@ -48,11 +48,11 @@ function TransferForm() {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ marginTop:'5vh',padding:'20px' }}>
       <h2>Transfer Between account</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Compte créditeur:</label>
+          <label>Credit Account:</label>
           <input
             className="form-control"
             type="number"
@@ -63,7 +63,7 @@ function TransferForm() {
           />
         </div>
         <div className="form-group">
-          <label>Compte débiteur:</label>
+          <label>Debit Account:</label>
           <input
             className="form-control"
             type="number"
@@ -74,7 +74,7 @@ function TransferForm() {
           />
         </div>
         <div className="form-group">
-          <label>Montant:</label>
+          <label>Amount:</label>
           <input
             className="form-control"
             type="number"
@@ -85,7 +85,7 @@ function TransferForm() {
           />
         </div>
         <div className="form-group">
-          <label>Raison du transfert:</label>
+          <label>Transfer Reason:</label>
           <input
             className="form-control"
             type="text"
@@ -96,7 +96,7 @@ function TransferForm() {
           />
         </div>
         <div className="form-group">
-          <label>Date d'effet:</label>
+          <label>Effective Date:</label>
           <input
             className="form-control"
             type="date"
@@ -107,7 +107,7 @@ function TransferForm() {
           />
         </div>
         <div className="form-group">
-          <label>Date d'enregistrement:</label>
+          <label>Registration Date:</label>
           <input
             className="form-control"
             type="date"
@@ -117,7 +117,7 @@ function TransferForm() {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">Envoyer</button>
+        <button type="submit" className="btn btn-primary">Send</button>
       </form>
     </div>
   );
