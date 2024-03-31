@@ -24,7 +24,6 @@ function AllTranferMoney() {
             <Table striped bordered hover variant="white" style={{ width: '50%', marginTop: '10vh' }}>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Credit Account</th>
                         <th>Debit Account</th>
                         <th>Amount</th>
@@ -36,7 +35,6 @@ function AllTranferMoney() {
                 <tbody>
                     {transferMoney.map(transferMonies => (
                         <tr key={transferMonies.id}>
-                            <td>{transferMonies.id}</td>
                             <td>{transferMonies.credit_account}</td>
                             <td>{transferMonies.debit_account}</td>
                             <td>{transferMonies.amount}</td>
