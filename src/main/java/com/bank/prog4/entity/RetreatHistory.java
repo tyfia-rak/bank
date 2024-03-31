@@ -2,16 +2,18 @@ package com.bank.prog4.entity;
 
 import lombok.*;
 
+import java.sql.Date;
 @Getter
 @AllArgsConstructor
 @Setter
 @ToString
 @NoArgsConstructor
-public class Details {
-    private int id_account;
+public class RetreatHistory {
+    private int id;
     private String firstName;
     private String lastName;
-    private double bankBalance;
-    private double loans;
-    private double interest;
+    private double amount;
+    private Date transaction_date;
+
+
 }
