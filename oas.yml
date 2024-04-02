@@ -108,7 +108,7 @@ paths:
       responses:
         '200':
           description: Success - Deposit made successfully
-          
+
   /transfers:
     get:
       summary: Get all transfers
@@ -123,6 +123,25 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Transfer'
+
+    post:
+      summary: Create a new transfer
+      tags:
+        - Transfers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+      responses:
+        '200':
+          description: Transfer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+                
 components:
   schemas:
     Account:
