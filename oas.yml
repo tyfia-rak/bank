@@ -108,7 +108,21 @@ paths:
       responses:
         '200':
           description: Success - Deposit made successfully
-
+          
+  /transfers:
+    get:
+      summary: Get all transfers
+      tags:
+        - Transfers
+      responses:
+        '200':
+          description: List of all transfers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transfer'
 components:
   schemas:
     Account:
