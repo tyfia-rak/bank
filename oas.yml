@@ -123,7 +123,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Transfer'
-
+                  
+  /transfers/{id}:
+    get:
+      summary: Get transfer by ID
+      tags:
+        - Transfers
+      parameters:
+        - name: id
+          in: path
+          description: ID of the transfer to retrieve
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Transfer details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
     post:
       summary: Create a new transfer
       tags:
@@ -141,7 +160,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transfer'
-                
+
 components:
   schemas:
     Account:
