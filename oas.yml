@@ -27,18 +27,18 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 
   /id_account/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: integer
+          format: int64
     get:
       summary: Get account by ID
       tags:
         - Accounts
-      parameters:
-        - name: accountId
-          in: path
-          description: ID of the account to retrieve
-          required: true
-          schema:
-            type: integer
-            format: int64
       responses:
         '200':
           description: Account details retrieved successfully
@@ -101,17 +101,18 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 
   /details/{date}:
+    parameters:
+      - name: date
+        in: path
+        description: Date for which balance is requested (YYYY-MM-DD format)
+        required: true
+        schema:
+          type: string
+          format: date
     get:
       summary: Get current balance or balance history
       tags:
         - Balances
-      parameters:
-        - name: date
-          in: query
-          description: Date for which balance is requested (YYYY-MM-DD format)
-          schema:
-            type: string
-            format: date
       responses:
         '200':
           description: Success - Balance retrieved successfully
@@ -127,7 +128,7 @@ paths:
           $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
-          
+
   /all_retreat:
     get:
       summary: Get all withdrawal
@@ -213,17 +214,17 @@ paths:
           $ref: '#/components/responses/InternalServerError'
 
   /transfers/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the transfer
+        required: true
+        schema:
+          type: integer
     get:
       summary: Get transfer by ID
       tags:
         - Transfers
-      parameters:
-        - name: id
-          in: path
-          description: ID of the transfer to retrieve
-          required: true
-          schema:
-            type: integer
       responses:
         '200':
           description: Transfer details retrieved successfully
