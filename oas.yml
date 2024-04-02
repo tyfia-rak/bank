@@ -123,7 +123,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Transfer'
-                  
+
   /transfers/{id}:
     get:
       summary: Get transfer by ID
@@ -295,3 +295,29 @@ components:
         - reason
         - initiation_date
         - status
+
+    AccountStatement:
+      type: object
+      properties:
+        operation_type:
+          type: string
+          description: Type of operation (credit or debit)
+        operation_date:
+          type: string
+          format: date-time
+          description: Date and time of the operation
+        amount:
+          type: number
+          description: Amount of the operation
+        operation_description:
+          type: string
+          description: Description or reason for the operation
+        main_balance:
+          type: number
+          description: Main balance at the time of the operation
+      required:
+        - operation_type
+        - operation_date
+        - amount
+        - operation_description
+        - main_balance
