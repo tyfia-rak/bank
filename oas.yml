@@ -19,6 +19,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Account'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
   /accounts/{Id}:
     get:
       summary: Get account by ID
@@ -39,6 +46,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
     post:
       summary: Create a new account
       tags:
@@ -56,6 +70,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 
   /balances:
     get:
@@ -78,6 +98,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/BalanceSnapshot'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 
   /withdrawal:
     post:
@@ -93,6 +119,12 @@ paths:
       responses:
         '200':
           description: Success - Withdrawal performed successfully
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 
   /deposits:
     post:
@@ -108,6 +140,12 @@ paths:
       responses:
         '200':
           description: Success - Deposit made successfully
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 
   /transfers:
     get:
@@ -123,6 +161,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Transfer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 
   /transfers/{id}:
     get:
@@ -143,6 +187,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transfer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
     post:
       summary: Create a new transfer
       tags:
@@ -160,6 +211,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transfer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 
   /statements:
     get:
@@ -190,7 +247,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/AccountStatement'
-                  
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
 components:
   schemas:
     Account:
@@ -351,3 +414,38 @@ components:
         - amount
         - operation_description
         - main_balance
+
+  responses:
+
+    BadRequest:
+      description: The request parameters are invalid or missing.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: The request parameters are invalid or missing.
+
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: The requested resource was not found.
+
+    InternalServerError:
+      description: An unexpected error occurred on the server.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: An unexpected error occurred on the server.
