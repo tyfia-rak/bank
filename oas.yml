@@ -161,6 +161,36 @@ paths:
               schema:
                 $ref: '#/components/schemas/Transfer'
 
+  /statements:
+    get:
+      summary: Get account statements
+      tags:
+        - Statements
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date of the statement period (YYYY-MM-DD format)
+          required: true
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date of the statement period (YYYY-MM-DD format)
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Account statements retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccountStatement'
+                  
 components:
   schemas:
     Account:
