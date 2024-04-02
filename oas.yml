@@ -205,3 +205,41 @@ components:
         - amount
         - source
         - effective_date
+
+    Transfer:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the transfer
+        sender_account_id:
+          type: integer
+          description: ID of the sender account
+        receiver_account_id:
+          type: integer
+          description: ID of the receiver account
+        amount:
+          type: number
+          description: Amount of the transfer
+        reason:
+          type: string
+          description: Reason for the transfer
+        initiation_date:
+          type: string
+          format: date-time
+          description: Date and time when the transfer was initiated
+        scheduled_date:
+          type: string
+          format: date-time
+          description: Date and time when the transfer is scheduled to occur
+        status:
+          type: string
+          enum: [Initiated, Pending, Completed, Cancelled]
+          description: Status of the transfer
+      required:
+        - sender_account_id
+        - receiver_account_id
+        - amount
+        - reason
+        - initiation_date
+        - status
